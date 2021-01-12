@@ -1,0 +1,99 @@
+import React, { Component } from 'react';
+const BaseUrl="http://localhost:3000/getfile/";
+class A extends Component {
+    constructor(){
+        super();
+        this.state={
+        Quizz: [],
+      reponse: []
+      
+
+    }
+    this.getAllProduct()
+}
+getAllProduct() {
+    fetch("http://127.0.0.1:3000/Product/allProduct", { method: "GET" })
+      .then(response => response.json())
+      .then(res => {
+        console.log("Quizz", res);
+        this.setState({ Quizz: res.data })//router http://127.0.0.1:3500/api/entreprise va retourner une liste qu'on va le mettre dans la varibale Quiz
+
+        //this.setState({reponse: res.data[2].reponse})
+      })
+  }
+    render() {
+        let { Quizz}=this.state
+        return (
+            <div>
+                {
+                    Quizz.map((item,index) => {
+                        console.log('item',item)
+                        return(
+           <div>
+               
+ 
+  {
+ 
+  <div className="container-fluid p-0">
+    <div id="header-carousel" className="carousel slide" data-ride="carousel">
+      <div className="carousel-inner">
+        <div className="carousel-item active">
+          <img className="w-100" src={BaseUrl+item.photo}alt="Image" />
+          <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
+            <div className="p-3" style={{maxWidth: 800}}>
+              <h4 className="text-primary text-uppercase font-weight-normal mb-md-3">Creative Interior Design</h4>
+  <h3 className="display-3 text-white mb-md-4">{item.name}</h3>
+  <h3 className="display-3 text-white mb-md-4">{item.description}</h3>
+  <h3 className="display-3 text-white mb-md-4">{item.price}</h3>
+  <h3 className="display-3 text-white mb-md-4">{item.quantity}</h3>
+              
+            </div>
+          </div>
+        </div>
+     
+      </div>
+      <div>
+  
+  <a className="carousel-control-next" href="#header-carousel" data-slide="next">
+    <div className="btn btn-primary" style={{width: 45, height: 45}}>
+      <span className="carousel-control-next-icon mb-n2" />
+    </div>
+  </a>
+</div>
+
+      
+    </div>
+  </div>
+                    }
+  
+  
+  
+  
+  
+  <div className="container-fluid">
+    <div className="container">
+      <div className="row">
+        
+        
+      </div>
+    </div>
+  </div>
+  
+  <div className="container-fluid bg-dark text-white py-5 px-sm-3 px-md-5">
+   
+   
+  </div>
+    
+    
+  
+</div>
+        );
+    })
+  }
+</div>
+
+        );
+    }
+}
+
+export default A;
